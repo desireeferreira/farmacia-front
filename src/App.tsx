@@ -1,38 +1,28 @@
-
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ListaCategorias from './components/Categoria/ListaCategorias';
 import DeletarCategoria from './components/Categoria/DeletarCategoria';
 import Home from './pages/Home';
 import FormularioCategoria from './components/Categoria/Formulario';
-// import CardCategoria from './components/Categoria/CardCategoria';
+import ListaCategoria from './components/Categoria/ListaCategoria';
 
-// import FormularioCategoria from './components/Categoria/FormularioCategoria';
 
-function App() {
+export function App() {
     return (
-        <>
         <BrowserRouter>
-        <Navbar />    
-        <div className="min-h-[80vh]">
-            <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} /> 
-            <Route path="/deletarCategoria/:id" element={<DeletarCategoria />} />
-            <Route path="/FormularioCategoria" element={<FormularioCategoria />} />
-            <Route path="/listaprodutos" element={<ListaCategorias />} />
-            <Route path="/cadastrarCategoria" element={<FormularioCategoria />} />
-            {/* <Route path="/CardCategoria" element={<CardCategoria tema={undefined} />} /> */}
-            
-            
-            </Routes>
-        </div>  
-        <Footer />
+            <Navbar />    
+            <div className="min-h-[80vh]">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Home />} /> 
+                    <Route path="/deletarCategoria/:id" element={<DeletarCategoria />} />
+                    <Route path="/formularioCategoria" element={<FormularioCategoria />} />            
+                    <Route path="/listaCategoria" element={<ListaCategoria tema={undefined} />} />
+                    <Route path="/cadastrarcategoria" element={<FormularioCategoria />} /> 
+                </Routes>
+            </div>  
+            <Footer />
         </BrowserRouter>
-        </>
     );
 }
-
-export default App

@@ -4,7 +4,7 @@ const api = axios.create({
     baseURL: 'https://crud-farmacia-t80.onrender.com/'
 });
 
-export const buscar = async (url: string, setDados: Function) => {
+export const buscar = async (url: string, setDados: Function, p0: { headers: { Authorization: any; }; }) => {
     const resposta = await api.get(url);
     setDados(resposta.data);
 }
