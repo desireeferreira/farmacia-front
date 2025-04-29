@@ -1,9 +1,7 @@
-function FormularioCategoria() {
 
-    //falta a logica de cadastro de categoria
-    
-    
-    
+function FormularioCategoria() {
+//falta a logica de cadastro de categoria
+
         return (
             <div className="container flex flex-col items-center justify-center mx-auto">
                 <h1 className="text-4xl text-center my-8">
@@ -45,3 +43,4 @@ function FormularioCategoria() {
     }
     
     export default FormularioCategoria;
+
