@@ -6,6 +6,7 @@ import DeletarCategoria from './components/Categoria/DeletarCategoria';
 import Home from './pages/Home';
 import FormularioCategoria from './components/Categoria/Formulario';
 import ListaCategoria from './components/Categoria/ListaCategoria';
+// import ListaCategoria from './components/Categoria/ListaCategoria';
 
 
 export function App() {
@@ -18,7 +19,7 @@ export function App() {
                     <Route path="/home" element={<Home />} /> 
                     <Route path="/deletarCategoria/:id" element={<DeletarCategoria />} />
                     <Route path="/formularioCategoria" element={<FormularioCategoria />} />            
-                    <Route path="/listaCategoria" element={<ListaCategoria tema={undefined} />} />
+                    <Route path="/listaprodutos" element={<ListaCategoria />} />
                     <Route path="/cadastrarcategoria" element={<FormularioCategoria />} /> 
                 </Routes>
             </div>  

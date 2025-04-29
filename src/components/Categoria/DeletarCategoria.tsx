@@ -3,9 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { buscar, deletar } from "../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
 import Categoria from "../../models/Categoria";
-// import Categoria from "../../../models/Categoria";
-// import { buscar, deletar } from "../../../services/Service";
-
 
 function DeletarCategoria() {
     const navigate = useNavigate();
@@ -15,9 +12,16 @@ function DeletarCategoria() {
 
     const { id } = useParams<{ id: string }>();
 
+    // Se você tiver um token no localStorage:
+    const token = localStorage.getItem('token');
+
     async function buscarPorId(id: string) {
         try {
-            await buscar(`/categorias/${id}`, setCategoria);
+            await buscar(`/categorias/${id}`, setCategoria, {
+                headers: {
+                    Authorization: token // Passa o token se o back exigir
+                }
+            });
         } catch (error) {
             alert("Erro ao buscar a categoria.");
         }
@@ -55,7 +59,7 @@ function DeletarCategoria() {
             </p>
             <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
                 <header className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>
-                    Categoria
+                    {categoria.nome || "Categoria"} {/* Mostra o nome ou "Categoria" */}
                 </header>
                 <p className='p-8 text-3xl bg-slate-200 h-full'>{categoria.descricao}</p>
                 <div className="flex">

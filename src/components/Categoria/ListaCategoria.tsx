@@ -1,33 +1,37 @@
-import { Link } from 'react-router-dom'
-import Categoria from '../../models/Categoria'
+import { useEffect, useState } from "react";
+import Categoria from "../../models/Categoria";
+import { buscar } from "../../services/Service";
+import CardCategoria from "./CardCategoria";
 
-interface CardCategoriaProps{
-     tema: Categoria
- }
+function ListaCategoria() {
+    
+    const [categoria, setCategoria] = useState<Categoria[]>([])
 
- function CardCategoria({ tema }: CardCategoriaProps) {
+    async function buscarCategorias() {
+        try {
+            await buscar('/categorias', setCategoria, {});
+        } catch (error: any) {
+            alert("Erro ao buscar categorias"); 
+        }
+    }
+    
+    useEffect(() => {
+        buscarCategorias()
+    }, [categoria.length])
+
     return (
-        <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-             <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>
-                Tema
-             </header>
-             <p className='p-8 text-3xl bg-slate-200 h-full'>{tema.descricao}</p>
-            
-             <div className="flex">
-                 <Link to=''
-                     className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
-                         flex items-center justify-center py-2'>
-                     <button>Editar</button>
-                 </Link>
+        <>
+            <div className="flex justify-center w-full my-4">
+                <div className="container flex flex-col">
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                        {categoria.map((categoria) => (
+                            <CardCategoria key={categoria.id} categoria={categoria} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
 
-                 <Link to='' className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
-                     flex items-center justify-center'>
-                     <button>Deletar</button>
-                 </Link>
-             </div>
-
-         </div>
-     )
- }
-
- export default CardCategoria;
+export default ListaCategoria;

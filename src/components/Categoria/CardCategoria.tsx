@@ -1,34 +1,40 @@
-import { Link } from 'react-router-dom'
-import Categoria from '../../models/Categoria'
+import { Link } from 'react-router-dom';
+import Categoria from '../../models/Categoria';
 
-interface CardCategoriaProps{
-    tema: Categoria
+// interface CardCategoriaProps {
+//     tema: Categoria;
+// }
+interface CardCategoriaProps {
+    categoria: Categoria; // Corrigido de 'tema' para 'categoria'
 }
 
-function CardCategoria({ tema }: CardCategoriaProps) {
-
+function CardCategoria({ categoria }: CardCategoriaProps) {
     return (
-        <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-            <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>
-                Tema
+        <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
+            <header className="py-2 px-6 bg-indigo-800 text-white font-bold text-2xl">
+                {categoria.nome} {/* Exibe o nome da categoria */}
             </header>
-            <p className='p-8 text-3xl bg-slate-200 h-full'>{tema.descricao}</p>
+            <p className="p-8 text-3xl bg-slate-200 h-full">{categoria.descricao}</p>
             
             <div className="flex">
-                <Link to=''
-                    className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
-                        flex items-center justify-center py-2'>
+                <Link
+                    to={`/editarCategoria/${categoria.id}`} 
+                    className="w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
+                        flex items-center justify-center py-2"
+                >
                     <button>Editar</button>
                 </Link>
 
-                <Link to='' className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
-                    flex items-center justify-center'>
+                <Link
+                    to={`/deletarCategoria/${categoria.id}`} 
+                    className="text-slate-100 bg-red-400 hover:bg-red-700 w-full 
+                        flex items-center justify-center py-2"
+                >
                     <button>Deletar</button>
                 </Link>
             </div>
-
         </div>
-    )
+    );
 }
 
 export default CardCategoria;
