@@ -9,7 +9,11 @@ function ListaCategoria() {
 
     async function buscarCategorias() {
         try {
-            await buscar('/categorias', setCategoria, {});
+            await buscar('/categorias', setCategoria, {
+                headers: {
+                    Authorization: undefined
+                }
+            });
         } catch (error: any) {
             alert("Erro ao buscar categorias"); 
         }
@@ -35,3 +39,4 @@ function ListaCategoria() {
 }
 
 export default ListaCategoria;
+

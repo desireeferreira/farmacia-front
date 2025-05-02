@@ -4,9 +4,8 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DeletarCategoria from './components/Categoria/DeletarCategoria';
 import Home from './pages/Home';
-import FormularioCategoria from './components/Categoria/Formulario';
+import FormularioCategoria from './components/Categoria/FormularioCategoria';
 import ListaCategoria from './components/Categoria/ListaCategoria';
-// import ListaCategoria from './components/Categoria/ListaCategoria';
 
 
 export function App() {
@@ -27,3 +26,4 @@ export function App() {
         </BrowserRouter>
     );
 }
+
